@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Opiniones</title>
+  <style>
+     nav ul li{
+        display: inline-block;
+        margin: 10px;
+        padding-left: 120px;
+        text-decoration: none;
+    }
+    nav ul li a{
+        text-decoration: none;
+        color:#fff;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        letter-spacing: 3px;
+        font-size: 18px;
+    }
+    nav ul li a{
+        padding-left: 70px;
+    }
+
+    nav ul li a:hover{
+        color: #c3dbc4;
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .opinion-box {
+      max-width: 350px;
+      margin: 0 auto;
+      background-color: #333;
+      padding: 40px;
+      margin-bottom: 25px;
+    }
+    body{
+    background-image: url('img/fondo.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #555;
+      color: white;
+      border: none;
+      resize: vertical;
+      height: 100px;
+    }
+
+    .rating {
+      display: flex;
+      justify-content: center;
+    }
+
+    .rating input[type="radio"] {
+      display: none;
+    }
+
+    .rating label {
+      color: white;
+      font-size: 35px;
+      cursor: pointer;
+    }
+
+    .rating label:before {
+      content: '\2605';
+    }
+
+    .rating input[type="radio"]:checked ~ label:before {
+      color: gold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+    <div class="navbar">
+        <img src="img/cocktailmania.png" class="logo" width="100px">
+        <ul class="links"> 
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cocktails.html">Cocktail Finder</a></li>
+          <li><a href="opiniones.html">Opiniones</a></li>
+        </ul>
+    </div>
+    </nav>
+</header>
+
+
+  <h1>Opiniones</h1>
+  
+  <div class="opinion-box">
+    <textarea id="opinion" name="opinion" placeholder="Danos tu opinion..." required></textarea>
+    <div class="rating">
+      <input type="radio" id="star5" name="rating" value="1" required>
+      <label for="star5"></label>
+      <input type="radio" id="star4" name="rating" value="2" required>
+      <label for="star4"></label>
+      <input type="radio" id="star3" name="rating" value="3" required>
+      <label for="star3"></label>
+      <input type="radio" id="star2" name="rating" value="4" required>
+      <label for="star2"></label>
+      <input type="radio" id="star1" name="rating" value="5" required>
+      <label for="star1"></label>
+    </div>
+    <input type="submit" value="Enviar">
+  </div>
+</body>
+</html>
