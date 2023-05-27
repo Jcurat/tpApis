@@ -123,5 +123,25 @@
             </div>
         </div>
 </div>
+
+<script> 
+fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic')
+    .then(res=>{
+        return res.json();
+    })
+    .then(data=>{
+       JSON.stringify(data);
+
+       const trago = data;
+
+    })
+    
+     .then( trago=>{
+        const trago2 = JSON.parse(trago);
+        console.log(trago2.strDrink)
+     }
+    )
+</script>
+
 </body>
 </html>
