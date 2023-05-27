@@ -1,3 +1,4 @@
+/*grid index css*/
 html, body {
   background-color: #000;
 }
@@ -85,8 +86,12 @@ h2{
     color: white;
   }
 
+  /* index css */
+
   body{
     background-image: url('img/fondo.png');
+    background-color:rgb(24, 22, 22);
+    background-blend-mode: soft-light;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -145,4 +150,125 @@ h2{
       font-size: 200px;
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       text-align: center;
+    }
+
+/* login css*/
+ .loginbody {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: black;
+    }
+
+    .container {
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center; 
+        background-color: white;
+    }
+
+    .container h2 {
+        text-align: center;
+        margin-bottom: 20px; 
+    }
+
+    .container input[type="submit"],
+    .container .google-signin-button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .container input[type="text"],
+    .container input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box; 
+    }
+     
+
+     .logon{
+         height: 255px;
+     }
+  
+
+     /*cocktails css*/
+     .search-container {
+      margin-bottom: 20px;
+    }
+   
+    .search-container input[type=text] {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+    }
+   
+    .search-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+   
+    .title {
+      font-size: 48px;
+    }
+
+    /* opiniones*/
+    h1 {
+      text-align: center;
+    }
+
+    .opinion-box {
+      max-width: 350px;
+      margin: 0 auto;
+      background-color: #333;
+      padding: 40px;
+      margin-bottom: 25px;
+    }
+    body{
+    background-image: url('img/fondo.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #555;
+      color: white;
+      border: none;
+      resize: vertical;
+      height: 100px;
+    }
+
+    .rating {
+      display: flex;
+      justify-content: center;
+    }
+
+    .rating input[type="radio"] {
+      display: none;
+    }
+
+    .rating label {
+      color: white;
+      font-size: 35px;
+      cursor: pointer;
+    }
+
+    .rating label:before {
+      content: '\2605';
+    }
+
+    .rating input[type="radio"]:checked ~ label:before {
+      color: gold;
     }
