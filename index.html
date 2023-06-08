@@ -32,12 +32,27 @@
 
 <div clas="pag1">
         <h1 class="titulo">CocktailMania</h1>
+<<<<<<< HEAD
       
 <br>
 <div class="pag2">
             <div class="center-wrapper">
             <a href="cocktails.html">
                 <button href="cocktails.html" class="centered-button">Aca tenemos la solución!</button>
+=======
+        <div class="seccion">
+            
+        
+    
+</div>
+
+<br>
+<div class="pag2">
+<br>
+            <div class="center-wrapper">
+            <a href="cocktails.html">
+                <button href="cocktails.html" class="centered-button">BUSCA TU COCKTAIL</button>
+>>>>>>> e7358580cdde13caa6cb2f74f747f4462b750154
             </a>
             </div>
 
@@ -112,24 +127,7 @@
         </div>
 </div>
 
-<script> 
-fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic')
-    .then(res=>{
-        return res.json();
-    })
-    .then(data=>{
-       JSON.stringify(data);
 
-       const trago = data;
-
-    })
-    
-     .then( trago=>{
-        const trago2 = JSON.parse(trago);
-        console.log(trago2.strDrink)
-     }
-    )
-</script>
 
 </body>
 </html>
