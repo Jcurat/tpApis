@@ -1,54 +1,21 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-class Login {
-    constructor() {
-      const loginForm = document.querySelector('#loginForm');
-      this._doLogin = this._doLogin.bind(this);
-      loginForm.addEventListener('submit', this._doLogin);
-    }
-  
-    _doLogin(event) {
-      event.preventDefault();
-      const username = document.querySelector("#username").value;
-      const password = document.querySelector("#password").value;
-  
-      // Realizar las acciones necesarias para el inicio de sesión, por ejemplo, enviar los datos al servidor
-      // Aquí puedes utilizar fetch o AJAX para enviar los datos al servidor y manejar la respuesta
-  
-      // Ejemplo de uso de fetch:
-      const loginData = {
-        username: username,
-        password: password
-      };
-  
-      fetch('/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginData)
-      })
-        .then(response => {
-          if (response.ok) {
-            window.location.href = '/index'; // Redirigir a la página de inicio de sesión exitoso
-          } else {
-            // Manejar error de inicio de sesión
-            console.error('Error en el inicio de sesión');
-          }
-        })
-        .catch(error => {
-          console.error('Error en el inicio de sesión', error);
-        });
-    }
-  }
-  
-  const login = new Login();
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAXCI0yR1Us1IR20zHjbPIqWaFii31kzf8",
+  authDomain: "cocktailmania-58ecf.firebaseapp.com",
+  projectId: "cocktailmania-58ecf",
+  storageBucket: "cocktailmania-58ecf.appspot.com",
+  messagingSenderId: "470186311041",
+  appId: "1:470186311041:web:faebafd21f36077c657c80",
+  measurementId: "G-570VXPQZRC"
+};
 
-  fetch('/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(loginData)
-  })
-  
-  
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

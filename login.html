@@ -12,7 +12,7 @@
 
 <body class="loginbody">
   <div class="container">
-    <img src="img/cocktailmania.png" class="logo">
+    <img src="img/cocktailmania.png" class="logo1">
     <form id="loginForm">
       <input type="text" id="username" placeholder="Username" required>
       <input type="password" id="password" placeholder="Password" required>
@@ -24,30 +24,9 @@
     </div>
     <div class="g_id_signin" data-type="standard"></div>
   </div>
-
-  <script>
-    function login(event) {
-      event.preventDefault();
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-
-      if (username === "admin" && password === "password") {
-        alert("Login successful");
-      } else {
-        alert("Invalid username or password");
-      }
-    }
-  </script>
-
-  <script>
-    function handleCredentialResponse(response) {
-      // Aquí puedes enviar la respuesta a tu servidor para completar la autenticación con Google
-      // Puedes usar AJAX para enviar la respuesta a tu servidor
-      console.log(response);
-    }
-  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/passport/0.4.1/passport.js"></script>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="login.js"></script>
 </body>
 </html>
 
