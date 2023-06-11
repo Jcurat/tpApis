@@ -60,3 +60,37 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`Servidor escuchando en el puerto ${port}`);
 });
+
+class DictionaryBackendServer {
+  constructor() {
+    
+    const app = express();
+    app.use(express.json());
+    app.use(express.static('public'));
+    app.use(express.urlencoded({extended: false}));
+    const authorization = new Authorization (app); // creo el objeto authorization
+    // TODO: create the Authorization object
+
+    app.get('/lookup/:word', this._doLookup);
+    app.post('/save/', this._doSave);
+    app.get('/login/', this._login);   //estos son endpoints
+    app.get('/',authorization.checkAuthenticated, this._goHome);
+    app.post('/login/', passport.authenticate('local', {failureRedirect: '/login/'}))
+
+    // TODO: add endpoings for login (GET and POST), for root (/)
+    
+    // Start server
+    app.listen(3000, () => console.log('Listening on port 3000'));    
+  }
+
+  async _login(req, res) {
+    res.sendFile(path.join(__dirname, "public/login.html"));
+  }
+
+  async _goHome(req, res) {
+    res.sendFile(path.join(__dirname, "public/home.html"));
+  }
+}
+
+new DictionaryBackendServer();
+
