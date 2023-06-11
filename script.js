@@ -3,7 +3,7 @@ function getCocktail() {
         console.log(data);
     }).catch((err) => {
         console.log('No encontramos el cocktail :(', err);
-    })
+    }))
 }
 
 getCocktail()
