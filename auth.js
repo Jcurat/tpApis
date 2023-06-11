@@ -1,51 +1,44 @@
-import passport from 'passport';
-import LocalStrategy from 'passport-local';
-import session from 'express-session';
-import users from './users.js'
-
-class Authorization {
-    constructor(app) {
+//////////EMPIEZA AUTHORIZATION LOCAL/////////
+class AuthorizationLocal{ //En esta clase ira todo lo relaciona a la autenticación usando la estrategia local que se conecta a la base de datos
+    constructor(app, db) {
         app.use(session({
             secret: "secret",
             resave: false,
             saveUninitialized: true,
         }));
+        this.db = db; //Guardo en la variable this.db la base de datos que importe desde ./db.js
 
         app.use(passport.initialize()); // init passport on every route call
         app.use(passport.session());
-        passport.use(new LocalStrategy(this._verify));
+        passport.use(new LocalStrategy(this._verify)); //Indico que usare la estrategia local y que para eso usare la funcion _verify
 
-        passport.serializeUser((user, done) => done(null, user));
-        passport.deserializeUser((user, done) => done(null, user));
+        passport.serializeUser((user, done) => done(null, user)); //serializa al usuario para que pueda ser guardado en la sesión
+        passport.deserializeUser((user, done) => done(null, user)); //Se deserializa el usuario para poder usarlo en solicitudes siguientes
     }
 
-    _verify(username, password, done) {
+    async _verify(username, password, done) {
 
-        // Find the user by username.
-        if (!users.has(username)) {
-            // If the user was not found, return an error.
-            return done(new Error('Invalid username or password'));
+        const user = await collection.findOne({ username: username }); //Busco en esa collection un username q coincida con el username ingresado x el usuario. Eso se guarda en la variable user
+    
+        if (!user) {
+          return done(null, false, { message: 'Invalid username or password' }); //Si el nombre de usuario está mal, devuelve este mensaje
         }
-
-        const user = users.get(username);
-        // Compare the password entered by the user with the password stored in the database.
+    
         if (user.password !== password) {
-            return done(new Error('Invalid username or password'));
+          return done(null, false, { message: 'Invalid username or password' }); //Si la contraseña está mal, devuelve este mensaje
         }
-
-        // The user is authenticated, so return them.
-        console.log("Login OK");
-        return done(null, user);
+    
+        console.log("Login OK"); //Si todo sale bien, se muestra esto en la terminal
+        return done(null, user); //Si la autenticación es correcta, se pasa el objeto user a passport para q lo almacene en sesión
+        //La diferencia con los "return done" q se ven en los ifs es que esos ponen false en vez del user, xq ahi hubo un error con el nombre o la contraseña
     }
 
-    checkAuthenticated(req, res, next) {
-        if (req.isAuthenticated()) { 
-            return next(); 
+    checkAuthenticated(req, res, next) {//verifica que el usuario este autenticado para darle acceso a los endpoints donde se llame esta función en el server.js
+        if (req.isAuthenticated()) { //req es el objeto q tiene la solicitud hecha x el cliente. isAuthenticated es un metodo de passport q chequea si estas autenticado
+            return next(); //Si estas autenticado, te permite el acceso
         }
-        res.redirect("/login");
+        res.redirect("/login"); //Si no estas autenticado te manda al login
     }
 
 }
-
-export default Authorization;
-const authorizationLocal = new AuthorizationLocal(app, db);
+export {AuthorizationGoogle, AuthorizationLocal}; //Exporto las dos estrategias para poder usarlas en el server.js

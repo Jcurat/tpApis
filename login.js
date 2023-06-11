@@ -1,21 +1,52 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAXCI0yR1Us1IR20zHjbPIqWaFii31kzf8",
-  authDomain: "cocktailmania-58ecf.firebaseapp.com",
-  projectId: "cocktailmania-58ecf",
-  storageBucket: "cocktailmania-58ecf.appspot.com",
-  messagingSenderId: "470186311041",
-  appId: "1:470186311041:web:faebafd21f36077c657c80",
-  measurementId: "G-570VXPQZRC"
-};
+import passport from 'passport';
+import LocalStrategy from 'passport-local';
+import session from 'express-session';
+import users from './users.js'
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+class Authorization {
+    constructor(app) {
+        app.use(session({
+            secret: "secret",
+            resave: false,
+            saveUninitialized: true,
+        }));
+
+        app.use(passport.initialize()); // init passport on every route call
+        app.use(passport.session());
+        passport.use(new LocalStrategy(this._verify));
+
+        passport.serializeUser((user, done) => done(null, user));
+        passport.deserializeUser((user, done) => done(null, user));
+    }
+
+    _verify(username, password, done) {
+
+        // Find the user by username.
+        if (!users.has(username)) {
+            // If the user was not found, return an error.
+            return done(new Error('Invalid username or password'));
+        }
+
+        const user = users.get(username);
+        // Compare the password entered by the user with the password stored in the database.
+        if (user.password !== password) {
+            return done(new Error('Invalid username or password'));
+        }
+
+        // The user is authenticated, so return them.
+        console.log("Login OK");
+        return done(null, user);
+    }
+
+    checkAuthenticated(req, res, next) {
+        if (req.isAuthenticated()) { 
+            return next(); 
+        }
+        res.redirect("/login");
+    }
+
+}
+
+export default Authorization;
+const authorizationLocal = new AuthorizationLocal(app, db);
