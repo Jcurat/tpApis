@@ -29,6 +29,7 @@ class cocktailManiaBackEndServer {
 
     app.get('/lookup/:word', this._doLookup);
     app.post('/save/', this._doSave);
+    app.delete('/delete/', this._doDelete);
     app.get('/login/', this._login);
     app.get('/auth/google/',
       passport.authenticate('google', {
@@ -56,22 +57,11 @@ class cocktailManiaBackEndServer {
     res.sendFile(path.join(__dirname, "index.html"));
   }
 
-  async _doLookup(req, res) {
-    const routeParams = req.params;
-    const word = routeParams.word;
-    const query = { word: word.toLowerCase() };
-    const collection = db.collection("dict");
-    const stored = await collection.findOne(query);
-    const response = {
-      word: word,
-      definition: stored ? stored.definition : ''
-    };
-    res.json(response);
-  }
+  
 
   async _doSave(req, res) {
-    const query = { word: req.body.word.toLowerCase() };
-    const update = { $set: { definition: req.body.definition } };
+    const query = { opinion: req.body.opinion.toLowerCase() };
+    const update = { $set: { rating: req.body.rating } };
     const params = { upsert: true };
     const collection = db.collection("dict");
     await collection.updateOne(query, update, params);
