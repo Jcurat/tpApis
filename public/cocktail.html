@@ -1,128 +1,130 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Cocktailmania</title>
-  <header>
-    <nav>
-    <div class="navbarr">
-        <img src="img/cocktailmania.png" class="logo" width="100px">
-        
-        <ul class="links"> 
-          <li><a href="/">Home</a></li>
-          <li><a href="cocktails.html">Cocktail Finder</a></li>
-          <li><a href="opiniones.html">Opiniones</a></li>
-        </ul>
-    </div>
-    </nav>
-</header>
-<br><br>
+    <meta charset="UTF-8">
+    <title>Cocktailmania</title>
+    
+    <header>
+      <nav>
+      <div class="navbarr">
+          <img src="img/cocktailmania.png" class="logo" width="100px">
+          
+          <ul class="links"> 
+            <li><a href="/">Home</a></li>
+            <li><a href="cocktails.html">Cocktail Finder</a></li>
+            <li><a href="opiniones.html">Opiniones</a></li>
+          </ul>
+      </div>
+      </nav>
+  </header>
 
- <style>
-    nav ul li{
-        display: inline-block;
-        margin: 10px;
-        padding-left: 120px;
-        text-decoration: none;
-    }
-    nav ul li a{
-        text-decoration: none;
-        color:#fff;
+  <br><br>
+
+  <style>
+      nav ul li{
+          display: inline-block;
+          margin: 10px;
+          padding-left: 120px;
+          text-decoration: none;
+      }
+      nav ul li a{
+          text-decoration: none;
+          color:#fff;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          letter-spacing: 3px;
+          font-size: 18px;
+      }
+      nav ul li a{
+          padding-left: 70px;
+      }
+
+      nav ul li a:hover{
+          color: #c3dbc4;
+      }
+
+      body {
+        background-image: url('img/fondo.png');
+        background-color:rgb(24, 22, 22);
+        background-blend-mode: soft-light;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+
+      h1, h2, p {
+        text-align: center;
+        color: #fff;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        letter-spacing: 3px;
-        font-size: 18px;
-    }
-    nav ul li a{
-        padding-left: 70px;
-    }
+        font-size: 330%;
+      }
 
-    nav ul li a:hover{
-        color: #c3dbc4;
-    }
+      input[type="text"] {
+        padding: 5px;
+        font-size: 16px;
+        width: 300px;
+        margin-bottom: 10px;
+      }
 
-    body {
-      background-image: url('img/fondo.png');
-      background-color:rgb(24, 22, 22);
-      background-blend-mode: soft-light;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-    }
+      button {
+        padding: 5px 10px;
+        font-size: 16px;
+      }
 
-    h1, h2, p {
-      text-align: center;
-      color: #fff;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      font-size: 330%;
-    }
+      .cocktail-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
 
-    input[type="text"] {
-      padding: 5px;
-      font-size: 16px;
-      width: 300px;
-      margin-bottom: 10px;
-    }
+      .cocktail-image {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
 
-    button {
-      padding: 5px 10px;
-      font-size: 16px;
-    }
+      .cocktail-name {
+        font-size: 30px;
+        margin-bottom: 5px;
+      }
 
-    .cocktail-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-    }
+      .cocktail-category {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
 
-    .cocktail-image {
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
+      .cocktail-instructions {
+        font-size: 16px;
+      }
 
-    .cocktail-name {
-      font-size: 30px;
-      margin-bottom: 5px;
-    }
+      .ingredient-list {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 20px;
+      }
 
-    .cocktail-category {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-
-    .cocktail-instructions {
-      font-size: 16px;
-    }
-
-    .ingredient-list {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-
-    .ingredient-list-item {
-      margin-bottom: 5px;
-    }
-    .box{
-      width: 500px;
-      height: 200px;
-      border: 1px solid black;
-      padding: 20px;
-      text-align: center;
-      background-color: rgba(57, 64, 59, 0.5)
-    }
-    .contenedor{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 45vh;
-    }
+      .ingredient-list-item {
+        margin-bottom: 5px;
+      }
+      .box{
+        width: 500px;
+        height: 200px;
+        border: 1px solid black;
+        padding: 20px;
+        text-align: center;
+        background-color: rgba(57, 64, 59, 0.5)
+      }
+      .contenedor{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 45vh;
+      }
   </style>
-
 </head>
+
 <body> 
     <div class="cocktail-container" id="cocktailInfo"></div>
 
