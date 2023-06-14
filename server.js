@@ -27,8 +27,9 @@ class cocktailManiaBackEndServer {
     app.use(express.urlencoded({ extended: false }));
     this._auth = new Authorization(app);
 
-    app.get('/lookup/:word', this._doLookup);
+    app.get('/lookup/:name', this._doLookup);
     app.post('/save/', this._doSave);
+    //app.delete('/delete/', this._doDelete);
     app.get('/login/', this._login);
     app.get('/auth/google/',
       passport.authenticate('google', {
@@ -58,20 +59,20 @@ class cocktailManiaBackEndServer {
 
   async _doLookup(req, res) {
     const routeParams = req.params;
-    const word = routeParams.word;
-    const query = { word: word.toLowerCase() };
+    const name = routeParams.name;
+    const query = { name: name.toLowerCase() };
     const collection = db.collection("dict");
     const stored = await collection.findOne(query);
     const response = {
-      word: word,
-      definition: stored ? stored.definition : ''
+      name: name,
+      opinion: stored ? stored.opinion : ''
     };
     res.json(response);
-  }
+  }  
 
   async _doSave(req, res) {
-    const query = { word: req.body.word.toLowerCase() };
-    const update = { $set: { definition: req.body.definition } };
+    const query = { name: req.body.name.toLowerCase() };
+    const update = { $set: { opinion: req.body.opinion } };
     const params = { upsert: true };
     const collection = db.collection("dict");
     await collection.updateOne(query, update, params);
