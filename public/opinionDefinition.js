@@ -1,11 +1,11 @@
-class OpinionView {
-    constructor(resultsContainer, opinionData) {
-      const opinionDisplay = resultsContainer.querySelector('#opinion');
-      const ratingDisplay = resultsContainer.querySelector('#rating');
-      opinionDisplay.textContent = opinionData.opinion;
-      ratingDisplay.textContent = opinionData.rating;
-    }
+class opinionReview {
+  constructor(resultsContainer, wordDefinition) {
+      const nameDisplay = resultsContainer.querySelector('#name');
+      const opDisplay = resultsContainer.querySelector('#opinion');
+      nameDisplay.textContent = wordDefinition.name;
+      opDisplay.textContent = wordDefinition.opinion;
   }
-  
-  export default OpinionView;
+}
+
+export default opinionReview;
   

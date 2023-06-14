@@ -1,23 +1,22 @@
-class OpinionSetDefinition {
-    constructor(resultsContainer) {
-      this.opinionInput = resultsContainer.querySelector('#opinion');
-      this.ratingInput = resultsContainer.querySelector('#rating');      
-    }
-  
-    show(opinionData) {
-      this.opinionInput.value = opinionData.opinion;
-      this.ratingInput.value = opinionData.rating;
-    }
-  
-    read() {
-      const result = {
-        opinion: this.opinionInput.value,
-        rating: this.ratingInput.value
-      };
-      return result;
-    }
+class NameSetOpinion {
+  constructor(resultsContainer) {
+    this.setNameInput = resultsContainer.querySelector('#set-name-input');
+    this.setOpinionInput = resultsContainer.querySelector('#set-opinion-input');      
   }
-  
-  export default OpinionSetDefinition;
-  
+
+  show(wordDefinition) {
+    this.setNameInput.value = wordDefinition.name;
+    this.setOpinionInput.value = wordDefinition.opinion;
+  }
+
+  read() {
+    const result = {
+      name: this.setNameInput.value,
+      opinion: this.setOpinionInput.value
+    };
+    return result;
+  }
+}
+
+export default NameSetOpinion;
   
