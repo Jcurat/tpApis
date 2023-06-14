@@ -9,7 +9,7 @@
         <img src="img/cocktailmania.png" class="logo" width="100px">
         
         <ul class="links"> 
-          <li><a href="index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="cocktails.html">Cocktail Finder</a></li>
           <li><a href="opiniones.html">Opiniones</a></li>
         </ul>
@@ -123,20 +123,15 @@
   </style>
 
 </head>
-<body>
-  <div class="contenedor">
-    <div class="box"> 
-      <h1>Cocktail Finder</h1>
-      <input type="text" id="searchInput" placeholder="Ingrese el nombre del trago">
-      <button onclick="searchCocktail()">Buscar</button>
-    </div> 
-  </div> 
-    <div class="cocktail-container" id="cocktailInfo"></div></div>
+<body> 
+    <div class="cocktail-container" id="cocktailInfo"></div>
 
   <script>
     // Función para buscar el trago deseado
     async function searchCocktail() {
-      const busquedaCocktail = document.getElementById('searchInput').value.trim();
+        const urlParams = new URLSearchParams(window.location.search);
+        const busquedaCocktail = urlParams.get('name');
+        //const busquedaCocktail = document.getElementById('searchInput').value.trim();
 
       if (busquedaCocktail === '') {
         alert('Por favor, ingrese un nombre de trago válido');
@@ -153,6 +148,7 @@
         }
 
         const cocktail = data.drinks[0];
+        console.log(cocktail);
         const ingredientes = [];
 
         // Extraer los ingredientes y las medidas del objeto cocktail
@@ -205,6 +201,8 @@
         console.log('Error:', error);
       }
     }
+
+    searchCocktail();
   </script>
 </body>
 </html>
