@@ -21,69 +21,41 @@
           <li><a href="/">Home</a></li>
           <li><a href="cocktails.html">Cocktail Finder</a></li>
           <li><a href="opiniones.html">Opiniones</a></li>
+
+          <link rel="stylesheet" href="myStyle.css">
         </ul>
     </div>
     </nav>
 </header>
 
-<!-- <h1>English dictionary</h1>
-
-  <form id="search">
-    Look up a word: <input type="text" id="word-input" />
-    <input type="submit" value="Search!">
-  </form>
-
-  <hr />
-
-  <div id="results" class="hidden">
-    The definition of <strong id="word"></strong> is:
-    <blockquote id="definition"></blockquote>
-    <hr />
-    <form id="set">
-      <h2>
-        Modify the definition for this word:
-      </h2>
-      Word: <input id="set-word-input" type="text" readonly />
-      <p>
-        Definition:
-      </p>
-      <textarea id="set-def-input"></textarea>
-      <input type="submit" value="Set">
-      <p id="status"></p>
-    </form>
-  </div>
-
-  <form action="/logout" method="POST">
-    <input type="submit" value="Logout">
-  </form>
- -->
 
   <h1>Opiniones</h1>
-
-  <form id="search">
-    Look up an opinion: <input type="text" id="name-input"/>
-    <input type="submit" value="Search!">
+<div class="opbox">
+  <form id="search" class="op">
+    Busca el nombre del usuario: <input type="text" id="name-input"/>
+    <input type="submit" value="Buscar">
   </form>
 
   <hr />
 
   <div id="results" class="hidden">
-    The definition of <strong id="name"></strong> is:
+    <strong id="name"></strong> Dice:
     <blockquote id="opinion"></blockquote>
     <hr />
     <form id="set">
       <h2>
-        Subi tu opinion de la pagina!:
+        Subí tu opinion de la página!:
       </h2>
       Usuario: <input id="set-name-input" type="text" readonly/>
       <p>
         Opinion:
       </p>
       <textarea id="set-opinion-input"></textarea>
-      <input type="submit" value="Set">
+      <input type="submit" value="Enviar!">
       <p id="status"></p>
     </form>
   </div>
+</div>
   
    <!-- <div class="opinion-box">
     <textarea id="opinion" name="opinion" placeholder="Danos tu opinion..." required></textarea>

@@ -232,12 +232,13 @@ h2{
       text-align: center;
     }
 
-    .opinion-box {
-      max-width: 350px;
+    .opbox {
+      max-width: 600px;
       margin: 0 auto;
-      background-color: #333;
+      background-color: rgba(57, 64, 59, 0.5);
       padding: 40px;
       margin-bottom: 25px;
+      color: white;
     }
     body{
     background-image: url('img/fondo.png');
@@ -256,26 +257,5 @@ h2{
       resize: vertical;
       height: 100px;
     }
-
-    .rating {
-      display: flex;
-      justify-content: center;
-    }
-
-    .rating input[type="radio"] {
-      display: none;
-    }
-
-    .rating label {
-      color: white;
-      font-size: 35px;
-      cursor: pointer;
-    }
-
-    .rating label:before {
-      content: '\2605';
-    }
-
-    .rating input[type="radio"]:checked ~ label:before {
-      color: gold;
-    }
+   
+    
